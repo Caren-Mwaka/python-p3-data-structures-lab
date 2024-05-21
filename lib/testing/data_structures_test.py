@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/env python3
 
+from __future__ import unicode_literals  # To ensure Unicode literals
 from data_structures import get_names, get_spiciest_foods, print_spicy_foods,\
                                 create_spicy_food, get_spicy_food_by_cuisine, \
                                 print_spiciest_foods, get_average_heat_level
 
 import io
 import sys
+
 
 class TestDataStructures:
     '''Module data_structures.py'''
@@ -43,9 +46,10 @@ class TestDataStructures:
         sys.stdout = captured_out
         print_spicy_foods(TestDataStructures.SPICY_FOODS)
         sys.stdout = sys.__stdout__
-        assert(captured_out.getvalue() == "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" +
-            "Buffalo Wings (American) | Heat Level: 🌶🌶🌶\n" +
-            "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n")
+        expected_output = "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" + \
+                          "Buffalo Wings (American) | Heat Level: 🌶🌶🌶\n" + \
+                          "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n"
+        assert captured_out.getvalue() == expected_output
 
     def test_get_spicy_food_by_cuisine(self):
         '''contains function get_spicy_food_by_cuisine that returns the food that matches a cuisine.'''
@@ -61,8 +65,9 @@ class TestDataStructures:
         sys.stdout = captured_out
         print_spiciest_foods(TestDataStructures.SPICY_FOODS)
         sys.stdout = sys.__stdout__
-        assert(captured_out.getvalue() == "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" +
-            "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n")
+        expected_output = "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" + \
+                          "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n"
+        assert captured_out.getvalue() == expected_output
 
     def test_get_average_heat_level(self):
         '''contains function get_average_heat_level that returns average of heat_levels in spicy_foods.'''
@@ -101,4 +106,3 @@ class TestDataStructures:
                 "heat_level": 10,
             },
         ]
-
